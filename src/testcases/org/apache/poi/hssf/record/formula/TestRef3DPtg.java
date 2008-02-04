@@ -14,52 +14,31 @@
    See the License for the specific language governing permissions and
    limitations under the License.
 ==================================================================== */
+        
+
 package org.apache.poi.hssf.record.formula;
 
 import org.apache.poi.hssf.model.Workbook;
-import org.apache.poi.hssf.record.RecordInputStream;
 
 /**
- *
- * @author  andy
- * @author Jason Height (jheight at chariot dot net dot au)
+ * Tests for Ref3DPtg
+ * 
+ * @author Josh Micich
  */
+public final class TestRef3DPtg extends AbstractPtgTestCase {
 
-public class UnknownPtg
-    extends Ptg
-{
-    private short size = 1;
+	public void testToFormulaString() {
+		
+		Ref3DPtg target = new Ref3DPtg("A1", (short)0);
+		
+		Workbook book = createWorkbookWithSheet("my sheet");
+		
+		assertEquals("'my sheet'!A1", target.toFormulaString(book));
 
-    /** Creates new UnknownPtg */
-
-    public UnknownPtg()
-    {
-    }
-
-    public UnknownPtg(RecordInputStream in)
-    {
-
-        // doesn't need anything
-    }
-
-    public void writeBytes(byte [] array, int offset)
-    {
-    }
-
-    public int getSize()
-    {
-        return size;
-    }
-
-    public String toFormulaString(Workbook book)
-    {
-        return "UNKNOWN";
-    }
-    public byte getDefaultOperandClass() {return Ptg.CLASS_VALUE;}
-
-    public Object clone() {
-      return new UnknownPtg();
-    }
-
-    
+        book.setSheetName(0, "ProfitAndLoss");
+        assertEquals("ProfitAndLoss!A1", target.toFormulaString(book));
+        
+        book.setSheetName(0, "profit+loss");
+        assertEquals("'profit+loss'!A1", target.toFormulaString(book));
+	}
 }

@@ -14,52 +14,31 @@
    See the License for the specific language governing permissions and
    limitations under the License.
 ==================================================================== */
-package org.apache.poi.hssf.record.formula;
+        
 
-import org.apache.poi.hssf.model.Workbook;
-import org.apache.poi.hssf.record.RecordInputStream;
+package org.apache.poi.hssf.record.formula.functions;
+
+import junit.framework.Test;
+import junit.framework.TestSuite;
 
 /**
- *
- * @author  andy
- * @author Jason Height (jheight at chariot dot net dot au)
+ * Direct tests for all implementors of <code>Function</code>.
+ * 
+ * @author Josh Micich
  */
+public final class AllIndividualFunctionEvaluationTests {
 
-public class UnknownPtg
-    extends Ptg
-{
-    private short size = 1;
+	// TODO - have this suite incorporated into a higher level one
+	public static Test suite() {
+		TestSuite result = new TestSuite("Tests for org.apache.poi.hssf.record.formula.functions");
+		result.addTestSuite(TestCountFuncs.class);
+		result.addTestSuite(TestDate.class);
+		result.addTestSuite(TestFinanceLib.class);
+		result.addTestSuite(TestIndex.class);
+		result.addTestSuite(TestMathX.class);
+		result.addTestSuite(TestRowCol.class);
+		result.addTestSuite(TestStatsLib.class);
+		return result;
+	}
 
-    /** Creates new UnknownPtg */
-
-    public UnknownPtg()
-    {
-    }
-
-    public UnknownPtg(RecordInputStream in)
-    {
-
-        // doesn't need anything
-    }
-
-    public void writeBytes(byte [] array, int offset)
-    {
-    }
-
-    public int getSize()
-    {
-        return size;
-    }
-
-    public String toFormulaString(Workbook book)
-    {
-        return "UNKNOWN";
-    }
-    public byte getDefaultOperandClass() {return Ptg.CLASS_VALUE;}
-
-    public Object clone() {
-      return new UnknownPtg();
-    }
-
-    
 }

@@ -14,52 +14,37 @@
    See the License for the specific language governing permissions and
    limitations under the License.
 ==================================================================== */
+        
+
 package org.apache.poi.hssf.record.formula;
 
 import org.apache.poi.hssf.model.Workbook;
-import org.apache.poi.hssf.record.RecordInputStream;
 
 /**
- *
- * @author  andy
- * @author Jason Height (jheight at chariot dot net dot au)
+ * Tests for Area3DPtg
+ * 
+ * @author Josh Micich
  */
+public final class TestArea3DPtg extends AbstractPtgTestCase {
 
-public class UnknownPtg
-    extends Ptg
-{
-    private short size = 1;
+    /**
+     * confirms that sheet names get properly escaped
+     */
+	public void testToFormulaString() {
+		
+		Area3DPtg target = new Area3DPtg("A1:B1", (short)0);
+		
+		String sheetName = "my sheet";
+		Workbook book = createWorkbookWithSheet(sheetName);
+		assertEquals("'my sheet'!A1:B1", target.toFormulaString(book));
+		
+        book.setSheetName(0, "Sheet1");
+        assertEquals("Sheet1!A1:B1", target.toFormulaString(book));
+        
+        book.setSheetName(0, "C64");
+        assertEquals("'C64'!A1:B1", target.toFormulaString(book));
+	}
 
-    /** Creates new UnknownPtg */
 
-    public UnknownPtg()
-    {
-    }
 
-    public UnknownPtg(RecordInputStream in)
-    {
-
-        // doesn't need anything
-    }
-
-    public void writeBytes(byte [] array, int offset)
-    {
-    }
-
-    public int getSize()
-    {
-        return size;
-    }
-
-    public String toFormulaString(Workbook book)
-    {
-        return "UNKNOWN";
-    }
-    public byte getDefaultOperandClass() {return Ptg.CLASS_VALUE;}
-
-    public Object clone() {
-      return new UnknownPtg();
-    }
-
-    
 }

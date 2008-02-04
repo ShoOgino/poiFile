@@ -14,52 +14,34 @@
    See the License for the specific language governing permissions and
    limitations under the License.
 ==================================================================== */
+        
+
 package org.apache.poi.hssf.record.formula;
 
-import org.apache.poi.hssf.model.Workbook;
-import org.apache.poi.hssf.record.RecordInputStream;
+import junit.framework.Test;
+import junit.framework.TestSuite;
 
 /**
- *
- * @author  andy
- * @author Jason Height (jheight at chariot dot net dot au)
+ * Collects all tests for this package.
+ * 
+ * @author Josh Micich
  */
-
-public class UnknownPtg
-    extends Ptg
-{
-    private short size = 1;
-
-    /** Creates new UnknownPtg */
-
-    public UnknownPtg()
-    {
-    }
-
-    public UnknownPtg(RecordInputStream in)
-    {
-
-        // doesn't need anything
-    }
-
-    public void writeBytes(byte [] array, int offset)
-    {
-    }
-
-    public int getSize()
-    {
-        return size;
-    }
-
-    public String toFormulaString(Workbook book)
-    {
-        return "UNKNOWN";
-    }
-    public byte getDefaultOperandClass() {return Ptg.CLASS_VALUE;}
-
-    public Object clone() {
-      return new UnknownPtg();
-    }
-
-    
+public class AllFormulaTests {
+	
+	public static Test suite() {
+		TestSuite result = new TestSuite("Tests for org.apache.poi.hssf.record.formula");
+		result.addTestSuite(TestArea3DPtg.class);
+		result.addTestSuite(TestAreaErrPtg.class);
+        result.addTestSuite(TestAreaPtg.class);
+		result.addTestSuite(TestErrPtg.class);
+		result.addTestSuite(TestFuncPtg.class);
+		result.addTestSuite(TestIntersectionPtg.class);
+		result.addTestSuite(TestPercentPtg.class);
+		result.addTestSuite(TestRangePtg.class);
+		result.addTestSuite(TestRef3DPtg.class);
+		result.addTestSuite(TestReferencePtg.class);
+		result.addTestSuite(TestSheetNameFormatter.class);
+		result.addTestSuite(TestUnionPtg.class);
+		return result;
+	}
 }
