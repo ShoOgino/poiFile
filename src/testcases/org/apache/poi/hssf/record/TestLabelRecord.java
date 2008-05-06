@@ -15,38 +15,27 @@
    limitations under the License.
 ==================================================================== */
 
-package org.apache.poi.hssf.record.formula;
+package org.apache.poi.hssf.record;
 
-import org.apache.poi.hssf.record.RecordInputStream;
-import org.apache.poi.ss.usermodel.Workbook;
+import org.apache.poi.hssf.HSSFTestDataSamples;
+import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 
+import junit.framework.AssertionFailedError;
+import junit.framework.TestCase;
 /**
- * RefNAPtg
- * @author Jason Height (jheight at chariot dot net dot au)
+ * Tests for <tt>LabelRecord</tt>
+ * 
+ * @author Josh Micich
  */
-public final class RefNAPtg extends ReferencePtg
-{
-    public final static byte sid  = 0x6C;
+public final class TestLabelRecord extends TestCase {
 
-    protected RefNAPtg() {
-      //Required for clone methods
-    }
-
-    public RefNAPtg(RecordInputStream in)
-    {
-      super(in);
-    }
-
-    public String getRefPtgName() {
-      return "RefNAPtg";
-    }
-
-    public String toFormulaString(Workbook book)
-    {
-      throw notImplemented();
-    }
-
-    public Object clone() {
-        throw notImplemented();
-    }
+	public void testEmptyString() {
+		HSSFWorkbook wb;
+		try {
+			wb = HSSFTestDataSamples.openSampleWorkbook("ex42570-20305.xls");
+		} catch (NullPointerException e) {
+			throw new AssertionFailedError("Identified bug 42570");
+		}
+		HSSFTestDataSamples.writeOutAndReadBack(wb);
+	}
 }
