@@ -17,7 +17,6 @@
 
 package org.apache.poi.hssf.record.formula;
 
-import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 
 /**
  * @author Josh Micich
@@ -30,12 +29,6 @@ abstract class ScalarConstantPtg extends Ptg {
 	public final byte getDefaultOperandClass() {
 		return Ptg.CLASS_VALUE;
 	}
-
-	public final String toFormulaString(HSSFWorkbook book) {
-		return toFormulaString();
-	}
-
-	protected abstract String toFormulaString();
 
 	public final String toString() {
 		StringBuffer sb = new StringBuffer(64);
