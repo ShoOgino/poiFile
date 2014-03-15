@@ -261,7 +261,6 @@ public class XSSFExportToXml implements Comparator<String>{
      * @return true, if document is valid
      */
     private boolean isValid(Document xml) throws SAXException{
-        boolean isValid = false;
         try{
             String language = "http://www.w3.org/2001/XMLSchema";
             SchemaFactory factory = SchemaFactory.newInstance(language);
@@ -270,14 +269,14 @@ public class XSSFExportToXml implements Comparator<String>{
             Schema schema = factory.newSchema(source);
             Validator validator = schema.newValidator();
             validator.validate(new DOMSource(xml));
+            
             //if no exceptions where raised, the document is valid
-            isValid=true;
-
-
+            return true;
         } catch(IOException e) {
             e.printStackTrace();
         }
-        return isValid;
+
+        return false;
     }
 
 
@@ -517,7 +516,7 @@ public class XSSFExportToXml implements Comparator<String>{
                             Node sequence = complexTypeChildList.item(j);
 
                             if ( sequence instanceof Element) {
-                                if (sequence.getLocalName().equals("sequence")) {
+                                if (sequence.getLocalName().equals("sequence") || sequence.getLocalName().equals("all")) {
                                     complexTypeNode = sequence;
                                     break;
                                 }
