@@ -15,25 +15,12 @@
    limitations under the License.
 ==================================================================== */
 
-package org.apache.poi.poifs.storage;
-
-import org.junit.runner.RunWith;
-import org.junit.runners.Suite;
 /**
- * Tests for org.apache.poi.poifs.storage
+ * DEV package serves two purposes.
+ *
+ * <ol>
+ *    <li>Examples for how to use POIFS</li>
+ *    <li>tools for developing and validating POIFS</li>
+ * </ol>
  */
-@RunWith(Suite.class)
-@Suite.SuiteClasses({
-    TestBATBlock.class,
-    TestBlockAllocationTableReader.class,
-    TestBlockAllocationTableWriter.class,
-    TestBlockListImpl.class,
-    TestDocumentBlock.class,
-    TestHeaderBlockReading.class,
-    TestHeaderBlockWriting.class,
-    TestPropertyBlock.class,
-    TestRawDataBlock.class,
-    TestRawDataBlockList.class
-})
-public class AllPOIFSStorageTests {
-}
+package org.apache.poi.poifs.dev;

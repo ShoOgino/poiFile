@@ -15,25 +15,9 @@
    limitations under the License.
 ==================================================================== */
 
-package org.apache.poi.poifs.storage;
-
-import org.junit.runner.RunWith;
-import org.junit.runners.Suite;
 /**
- * Tests for org.apache.poi.poifs.storage
+ * The eventfilesystem is an efficient method for reading OLE 2 CDF files.  It is to OLE 2 CDF what SAX is to XML.
+ *
+ * @see org.apache.poi.poifs.filesystem
  */
-@RunWith(Suite.class)
-@Suite.SuiteClasses({
-    TestBATBlock.class,
-    TestBlockAllocationTableReader.class,
-    TestBlockAllocationTableWriter.class,
-    TestBlockListImpl.class,
-    TestDocumentBlock.class,
-    TestHeaderBlockReading.class,
-    TestHeaderBlockWriting.class,
-    TestPropertyBlock.class,
-    TestRawDataBlock.class,
-    TestRawDataBlockList.class
-})
-public class AllPOIFSStorageTests {
-}
+package org.apache.poi.poifs.eventfilesystem;

@@ -15,25 +15,8 @@
    limitations under the License.
 ==================================================================== */
 
-package org.apache.poi.poifs.storage;
-
-import org.junit.runner.RunWith;
-import org.junit.runners.Suite;
 /**
- * Tests for org.apache.poi.poifs.storage
+ * storage package contains low level binary structures for POIFS's implementation of the OLE 2
+ * Compound Document Format.
  */
-@RunWith(Suite.class)
-@Suite.SuiteClasses({
-    TestBATBlock.class,
-    TestBlockAllocationTableReader.class,
-    TestBlockAllocationTableWriter.class,
-    TestBlockListImpl.class,
-    TestDocumentBlock.class,
-    TestHeaderBlockReading.class,
-    TestHeaderBlockWriting.class,
-    TestPropertyBlock.class,
-    TestRawDataBlock.class,
-    TestRawDataBlockList.class
-})
-public class AllPOIFSStorageTests {
-}
+package org.apache.poi.poifs.storage;

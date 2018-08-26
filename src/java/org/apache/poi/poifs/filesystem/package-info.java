@@ -15,25 +15,9 @@
    limitations under the License.
 ==================================================================== */
 
-package org.apache.poi.poifs.storage;
-
-import org.junit.runner.RunWith;
-import org.junit.runners.Suite;
 /**
- * Tests for org.apache.poi.poifs.storage
+ * filesystem package maps OLE 2 Compound document files to a more familiar filesystem interface.
+ *
+ * @see org.apache.poi.poifs.eventfilesystem
  */
-@RunWith(Suite.class)
-@Suite.SuiteClasses({
-    TestBATBlock.class,
-    TestBlockAllocationTableReader.class,
-    TestBlockAllocationTableWriter.class,
-    TestBlockListImpl.class,
-    TestDocumentBlock.class,
-    TestHeaderBlockReading.class,
-    TestHeaderBlockWriting.class,
-    TestPropertyBlock.class,
-    TestRawDataBlock.class,
-    TestRawDataBlockList.class
-})
-public class AllPOIFSStorageTests {
-}
+package org.apache.poi.poifs.filesystem;
